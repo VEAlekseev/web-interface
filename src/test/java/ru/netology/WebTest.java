@@ -9,10 +9,11 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 class WebTest {
+    static SelenideElement form = $("[class=\"form form_size_m form_theme_alfa-on-white\"]");
+
     @Test
-    void verificationFormSubmit() throws InterruptedException {
+    void verificationFormSubmit() {
         open("http://localhost:9999");
-        SelenideElement form = $("[class=\"form form_size_m form_theme_alfa-on-white\"]");
         form.$("[data-test-id=name] input").setValue("Иванов Иван");
         form.$("[data-test-id=phone] input").setValue("+79111111111");
         form.$("[data-test-id=agreement]").click();
@@ -22,9 +23,8 @@ class WebTest {
     }
 
     @Test
-    void verificationEntryToLatinLetters() throws InterruptedException {
+    void verificationEntryToLatinLetters() {
         open("http://localhost:9999");
-        SelenideElement form = $("[class= \"form form_size_m form_theme_alfa-on-white\"]");
         form.$("[data-test-id=name] input").setValue("Ivanov Ivan");
         form.$("[data-test-id=phone] input").setValue("+79111111111");
         form.$("[data-test-id=agreement]").click();
@@ -34,9 +34,8 @@ class WebTest {
     }
 
     @Test
-    void verificationEntryWrongNumber() throws InterruptedException {
+    void verificationEntryWrongNumber() {
         open("http://localhost:9999");
-        SelenideElement form = $("[class= \"form form_size_m form_theme_alfa-on-white\"]");
         form.$("[data-test-id=name] input").setValue("Иванов Иван");
         form.$("[data-test-id=phone] input").setValue("+791111111");
         form.$("[data-test-id=agreement]").click();
@@ -46,9 +45,8 @@ class WebTest {
     }
 
     @Test
-    void verificationNotAgreement() throws InterruptedException {
+    void verificationNotAgreement() {
         open("http://localhost:9999");
-        SelenideElement form = $("[class= \"form form_size_m form_theme_alfa-on-white\"]");
         form.$("[data-test-id=name] input").setValue("Иванов Иван");
         form.$("[data-test-id=phone] input").setValue("+79012345678");
         form.$("[class=\"button button_view_extra button_size_m button_theme_alfa-on-white\"]").click();
